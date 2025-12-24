@@ -61,10 +61,11 @@ pip install -r requirements.txt
 ```
 ### **2\. Configuration**
 
-* Create a .env file in the root directory to store your API key. This file is ignored by Git to protect your secrets.  
+* Copy a .env file in the root directory to store your API key. This file is ignored by Git to protect your secrets.  
 ```
-# Create .env file (Mac/Linux)  
-touch .env
+# copy .env file (Mac/Linux)  
+cp .env.example .env
+nano .env
 ```
 
 Open the .env file and add your configuration (replace hf\_... with your actual token):  
