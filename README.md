@@ -127,32 +127,7 @@ async def main():
 if __name__ == "__main__":  
     asyncio.run(main())
 ```
-## **📂 Project Structure**
 
-AI-Self-Healing-Agents/
-├── .env                    # 🔒 API Keys & Secrets (Ignored by Git)
-├── .gitignore              #  Files to exclude from version control
-├── README.md               # 📘 Project documentation
-├── requirements.txt        # 📦 Python dependencies list
-├── src/                    # 🧠 Core Source Code
-│   ├── agents/             #    🤖 The Agent Logic
-│   │   ├── base_agent.py   #       - The "Skeleton" (Parent Class)
-│   │   ├── healing_agent.py#       - The "Doctor" (AI Repair Logic)
-│   │   └── specialized.py  #       - The "Workers" (Data/API/Analytics)
-│   ├── api/                #    🔌 External Connections
-│   │   └── qwen_client.py  #       - Hugging Face Qwen AI Client
-│   ├── graph/              #    🕸️ Orchestration
-│   │   └── healing_graph.py#       - LangGraph Logic Manager
-│   └── utils/              #    🛠️ Utilities
-│       └── config.py       #       - Configuration Loader
-├── examples/               # 🎓 Tutorials & Demos
-│   ├── quick_start.py      #    - Basic connection test
-│   └── custom_agent.py     #    - Template for creating new agents
-├── real_world/             # 🏭 Production Simulations
-│   ├── run_complete.py     #    - Main entry point for full simulation
-│   └── complete_working.py #    - Complex IT infrastructure logic
-└── tests/                  # 🧪 Quality Assurance
-    └── test_basic.py       #    - Automated verification tests
 ## **🤝 Contributing**
 
 Contributions are welcome! Please feel free to submit a Pull Request.
