@@ -45,40 +45,35 @@ cd AI-Self-Healing-Agents
 
 * Create and activate a virtual environment:  
 ```
-\# macOS/Linux  
-python3 \-m venv venv  
+# macOS/Linux  
+python3 -m venv venv  
 source venv/bin/activate
 ```
 ```
-\# Windows  
-python \-m venv venv  
+# Windows  
+python -m venv venv  
 venv\\Scripts\\activate
 ```
 
-Create the requirements.txt file (copy and run this command block):  
-cat \<\<EOF \> requirements.txt  
-asyncio  
-python-dotenv  
-huggingface\_hub  
-langgraph  
-pytest  
-numpy  
-EOF
-
-Install the dependencies:  
+* Install the dependencies:  
+```
 pip install \-r requirements.txt
-
+```
 ### **2\. Configuration**
 
-Create a .env file in the root directory to store your API key. This file is ignored by Git to protect your secrets.  
-\# Create .env file (Mac/Linux)  
+* Create a .env file in the root directory to store your API key. This file is ignored by Git to protect your secrets.  
+```
+# Create .env file (Mac/Linux)  
 touch .env
+```
 
 Open the .env file and add your configuration (replace hf\_... with your actual token):  
-\# .env content  
-HF\_TOKEN=hf\_your\_token\_goes\_here  
-QWEN\_MODEL=Qwen/Qwen2.5-7B-Instruct  
-LOG\_LEVEL=INFO
+```
+# .env content  
+HF_TOKEN=hf_........  
+QWEN_MODEL=Qwen/Qwen2.5-7B-Instruct  
+LOG_LEVEL=INFO
+```
 
 *(Get your token from [Hugging Face Settings](https://huggingface.co/settings/tokens))*
 
@@ -87,46 +82,51 @@ LOG\_LEVEL=INFO
 ### **🧪 Quick Verification**
 
 Run the basic smoke test to ensure your environment and AI connection are set up correctly:  
+```
 python examples/quick\_start.py
-
+```
 ### **🏭 Run the "Real World" Simulation**
 
 This script launches a full IT monitoring simulation with Website, API, and Database agents running continuously. You will see them occasionally fail (simulated errors) and get "healed" by the doctor.  
-python real\_world/run\_complete.py
-
+```
+python real_world/run_complete.py
+```
 ### **📈 Run Custom Examples**
 
-If you have created custom bots (like a Stock Monitor), you can run them here:  
-python my\_stock\_bot.py
-
+If you have created custom bots (like a Stock Monitor), you can run them here:
+```  
+python my_stock_bot.py
+```
 ## **🛠️ How to Create Your Own Agent**
 
-Creating a new robot is easy. You just need to inherit from BaseAgent and define the process() method.  
-Create a file named my\_agent.py:  
-from src.agents.base\_agent import BaseAgent  
+### **Creating a new robot is easy. You just need to inherit from BaseAgent and define the process() method.**
+
+* Create a file named my_agent.py:  
+```
+from src.agents.base_agent import BaseAgent  
 import asyncio
 
 class MyCustomAgent(BaseAgent):  
-    def \_\_init\_\_(self):  
-        \# Give your agent a unique ID and type  
-        super().\_\_init\_\_(agent\_id="my\_worker", agent\_type="custom")
+    def __init__(self):  
+        # Give your agent a unique ID and type  
+        super().__init__(agent_id="my_worker", agent_type="custom")
 
     async def process(self, task):  
         print(f"Processing task: {task}")  
           
-        \# Your custom logic here...  
-        \# If you raise an Exception here, the Healing Agent will catch it\!  
+        # Your custom logic here...  
+        # If you raise an Exception here, the Healing Agent will catch it\!  
           
         return {"status": "done", "result": "success"}
 
-\# Run it  
+# Run it  
 async def main():  
-    agent \= MyCustomAgent()  
+    agent = MyCustomAgent()  
     await agent.execute({"data": "hello"})
 
-if \_\_name\_\_ \== "\_\_main\_\_":  
+if __name__ == "__main__":  
     asyncio.run(main())
-
+```
 ## **📂 Project Structure**
 
 ├── .env                    \# Secrets (Not uploaded to Git)  
@@ -150,11 +150,11 @@ if \_\_name\_\_ \== "\_\_main\_\_":
 
 ## **🤝 Contributing**
 
-Contributions are welcome\! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the Project  
-2. Create your Feature Branch (git checkout \-b feature/AmazingFeature)  
-3. Commit your Changes (git commit \-m 'Add some AmazingFeature')  
+2. Create your Feature Branch (git checkout -b feature/AmazingFeature)  
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')  
 4. Push to the Branch (git push origin feature/AmazingFeature)  
 5. Open a Pull Request
 
