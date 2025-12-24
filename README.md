@@ -57,7 +57,7 @@ venv\\Scripts\\activate
 
 * Install the dependencies:  
 ```
-pip install \-r requirements.txt
+pip install -r requirements.txt
 ```
 ### **2\. Configuration**
 
@@ -83,7 +83,7 @@ LOG_LEVEL=INFO
 
 Run the basic smoke test to ensure your environment and AI connection are set up correctly:  
 ```
-python examples/quick\_start.py
+python examples/quick_start.py
 ```
 ### **🏭 Run the "Real World" Simulation**
 
@@ -129,25 +129,30 @@ if __name__ == "__main__":
 ```
 ## **📂 Project Structure**
 
-├── .env                    \# Secrets (Not uploaded to Git)  
-├── .gitignore              \# Files to ignore  
-├── README.md               \# This file  
-├── requirements.txt        \# Python dependencies  
-├── src/  
-│   ├── agents/  
-│   │   ├── base\_agent.py        \# The Skeleton (Parent Class)  
-│   │   ├── healing\_agent.py     \# The Doctor (AI Logic)  
-│   │   └── specialized\_agents.py \# The Workers (Data/API/Analytics)  
-│   ├── api/  
-│   │   └── qwen\_client.py       \# AI Connection Client  
-│   ├── graph/  
-│   │   └── healing\_graph.py     \# The Logic Manager  
-│   └── utils/  
-│       └── config.py            \# Configuration loader  
-├── examples/               \# Tutorials and learning scripts  
-├── real\_world/             \# Production-grade simulations  
-└── tests/                  \# Verification tests
-
+AI-Self-Healing-Agents/
+├── .env                    # 🔒 API Keys & Secrets (Ignored by Git)
+├── .gitignore              #  Files to exclude from version control
+├── README.md               # 📘 Project documentation
+├── requirements.txt        # 📦 Python dependencies list
+├── src/                    # 🧠 Core Source Code
+│   ├── agents/             #    🤖 The Agent Logic
+│   │   ├── base_agent.py   #       - The "Skeleton" (Parent Class)
+│   │   ├── healing_agent.py#       - The "Doctor" (AI Repair Logic)
+│   │   └── specialized.py  #       - The "Workers" (Data/API/Analytics)
+│   ├── api/                #    🔌 External Connections
+│   │   └── qwen_client.py  #       - Hugging Face Qwen AI Client
+│   ├── graph/              #    🕸️ Orchestration
+│   │   └── healing_graph.py#       - LangGraph Logic Manager
+│   └── utils/              #    🛠️ Utilities
+│       └── config.py       #       - Configuration Loader
+├── examples/               # 🎓 Tutorials & Demos
+│   ├── quick_start.py      #    - Basic connection test
+│   └── custom_agent.py     #    - Template for creating new agents
+├── real_world/             # 🏭 Production Simulations
+│   ├── run_complete.py     #    - Main entry point for full simulation
+│   └── complete_working.py #    - Complex IT infrastructure logic
+└── tests/                  # 🧪 Quality Assurance
+    └── test_basic.py       #    - Automated verification tests
 ## **🤝 Contributing**
 
 Contributions are welcome! Please feel free to submit a Pull Request.
