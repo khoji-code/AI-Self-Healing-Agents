@@ -34,8 +34,11 @@ The system is built on a "Hub and Spoke" model where a central manager orchestra
 ### **1\. Installation**
 
 Clone the repository and enter the directory:  
-git clone \[https://github.com/YOUR\_USERNAME/my-healing-agent.git\](https://github.com/YOUR\_USERNAME/my-healing-agent.git)  
-cd my-healing-agent
+```
+git clone https://github.com/khoji-code/AI-Self-Healing-Agents.git
+```
+
+cd AI-Self-Healing-Agents
 
 Create and activate a virtual environment:  
 \# macOS/Linux  
