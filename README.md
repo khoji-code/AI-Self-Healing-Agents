@@ -38,16 +38,22 @@ Clone the repository and enter the directory:
 git clone https://github.com/khoji-code/AI-Self-Healing-Agents.git
 ```
 
+* Open the folder
+```
 cd AI-Self-Healing-Agents
+```
 
-Create and activate a virtual environment:  
+* Create and activate a virtual environment:  
+```
 \# macOS/Linux  
 python3 \-m venv venv  
 source venv/bin/activate
-
+```
+```
 \# Windows  
 python \-m venv venv  
 venv\\Scripts\\activate
+```
 
 Create the requirements.txt file (copy and run this command block):  
 cat \<\<EOF \> requirements.txt  
