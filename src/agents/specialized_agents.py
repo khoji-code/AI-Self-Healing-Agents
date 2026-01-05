@@ -1,8 +1,11 @@
-
+"""
+Specialized Agents for the Self-Healing System
+"""
 from typing import Dict, Any, Optional
 import asyncio
 import random
 import time
+import numpy as np  # ADDED THIS IMPORT
 from datetime import datetime
 from .base_agent import BaseAgent
 
@@ -189,20 +192,39 @@ class AnalyticsAgent(BaseAgent):
             trend = "stable"
             change_pct = 0
         
+        # Use numpy safely with fallback
+        try:
+            volatility = np.std(values) if len(values) > 1 else 0
+        except:
+            # Fallback if numpy not available
+            if len(values) > 1:
+                mean = sum(values) / len(values)
+                variance = sum((x - mean) ** 2 for x in values) / len(values)
+                volatility = variance ** 0.5
+            else:
+                volatility = 0
+        
         return {
             "trend": trend,
             "change_percentage": change_pct,
             "data_points": len(values),
-            "volatility": np.std(values) if len(values) > 1 else 0
+            "volatility": volatility
         }
     
     def _detect_anomalies(self, metrics: Dict[str, Any]) -> Dict[str, Any]:
         values = list(metrics.values()) if metrics else []
         
         if len(values) > 2:
-            mean = np.mean(values)
-            std = np.std(values)
-            anomalies = [v for v in values if abs(v - mean) > 2 * std]
+            try:
+                mean = np.mean(values)
+                std = np.std(values)
+                anomalies = [v for v in values if abs(v - mean) > 2 * std]
+            except:
+                # Fallback calculation
+                mean = sum(values) / len(values)
+                variance = sum((x - mean) ** 2 for x in values) / len(values)
+                std = variance ** 0.5
+                anomalies = [v for v in values if abs(v - mean) > 2 * std]
         else:
             anomalies = []
         
@@ -216,10 +238,14 @@ class AnalyticsAgent(BaseAgent):
         values = list(metrics.values()) if metrics else []
         
         if len(values) > 3:
-            # Simple linear forecast
-            x = np.arange(len(values))
-            coef = np.polyfit(x, values, 1)
-            next_value = coef[0] * len(values) + coef[1]
+            try:
+                # Simple linear forecast with numpy
+                x = np.arange(len(values))
+                coef = np.polyfit(x, values, 1)
+                next_value = coef[0] * len(values) + coef[1]
+            except:
+                # Fallback: simple average of last 3 values
+                next_value = sum(values[-3:]) / min(3, len(values))
         else:
             next_value = values[-1] if values else 0
         

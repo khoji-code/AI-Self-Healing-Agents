@@ -1,6 +1,9 @@
-
+"""
+Main Qwen Client for Self-Healing Agents Project - FIXED VERSION
+"""
 import os
 import asyncio
+import json
 from typing import Optional, Dict, Any, List
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
@@ -8,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class QwenClient:
-    """Main Qwen client for the self-healing agents project"""
+    """Main Qwen client for the self-healing agents project - FIXED"""
     
     def __init__(self, model: str = None):
         self.hf_token = os.getenv("HF_TOKEN")
@@ -26,7 +29,7 @@ class QwenClient:
                       temperature: float = 0.7,
                       max_tokens: int = 500,
                       **kwargs) -> str:
-        """Generate text using Qwen"""
+        """Generate text using Qwen - FIXED API"""
         
         messages = []
         if system_prompt:
@@ -34,7 +37,9 @@ class QwenClient:
         messages.append({"role": "user", "content": prompt})
         
         try:
-            response = self.client.chat_completion(
+            # FIX: Use correct parameter names for newer HuggingFace API
+            response = self.client.chat.completions.create(
+                model=self.model,
                 messages=messages,
                 max_tokens=max_tokens,
                 temperature=temperature,
@@ -54,7 +59,18 @@ class QwenClient:
             return content
             
         except Exception as e:
-            raise Exception(f"Qwen API error: {str(e)}")
+            # Try alternative API format if the above fails
+            try:
+                # Fallback to text generation API
+                response = self.client.text_generation(
+                    prompt=f"System: {system_prompt}\n\nUser: {prompt}\n\nAssistant:",
+                    max_new_tokens=max_tokens,
+                    temperature=temperature,
+                    **kwargs
+                )
+                return response.strip()
+            except Exception as e2:
+                raise Exception(f"Qwen API error: {str(e)} - Fallback also failed: {str(e2)}")
     
     async def generate_structured(self,
                                prompt: str,
@@ -75,7 +91,6 @@ class QwenClient:
         response = await self.generate(structured_prompt, **kwargs)
         
         try:
-            import json
             return json.loads(response)
         except:
             return {"raw_response": response}

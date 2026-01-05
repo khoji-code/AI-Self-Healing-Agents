@@ -1,0 +1,196 @@
+{
+  "experiment_1": {
+    "name": "Baseline vs Self-Healing Comparison",
+    "sample_size": 1000,
+    "baseline_success_rate": 76.7,
+    "self_healing_success_rate": 95.1,
+    "improvement_percentage": 24.0,
+    "baseline_failures": 233,
+    "healed_failures": 184,
+    "unhealed_failures": 49
+  },
+  "experiment_2": {
+    "name": "Bug Detection Effectiveness",
+    "bug_patterns": [
+      {
+        "pattern": "division_by_zero",
+        "detection_rate": 0.95
+      },
+      {
+        "pattern": "null_pointer",
+        "detection_rate": 0.88
+      },
+      {
+        "pattern": "memory_overflow",
+        "detection_rate": 0.92
+      },
+      {
+        "pattern": "timeout",
+        "detection_rate": 0.85
+      },
+      {
+        "pattern": "resource_leak",
+        "detection_rate": 0.78
+      }
+    ],
+    "average_detection_rate": 27.8,
+    "average_false_positives": 3.6,
+    "average_false_negatives": 3.8,
+    "precision": 88.5,
+    "recall": 88.0
+  },
+  "experiment_3": {
+    "name": "Security Attack Detection",
+    "attack_types": [
+      {
+        "attack_type": "SQL Injection",
+        "detection_rate": 94,
+        "detection_percentage": 94,
+        "avg_response_time_ms": 120,
+        "false_positive_rate": 1.0
+      },
+      {
+        "attack_type": "XSS",
+        "detection_rate": 96,
+        "detection_percentage": 96,
+        "avg_response_time_ms": 110,
+        "false_positive_rate": 2.7
+      },
+      {
+        "attack_type": "Path Traversal",
+        "detection_rate": 97,
+        "detection_percentage": 97,
+        "avg_response_time_ms": 95,
+        "false_positive_rate": 2.1
+      },
+      {
+        "attack_type": "Brute Force",
+        "detection_rate": 91,
+        "detection_percentage": 91,
+        "avg_response_time_ms": 250,
+        "false_positive_rate": 2.8
+      },
+      {
+        "attack_type": "DoS",
+        "detection_rate": 90,
+        "detection_percentage": 90,
+        "avg_response_time_ms": 180,
+        "false_positive_rate": 2.6
+      }
+    ],
+    "average_detection_rate": 93.6,
+    "average_response_time_ms": 151,
+    "overall_accuracy": 88.9,
+    "threats_prevented": 468
+  },
+  "experiment_4": {
+    "name": "Healing Time Analysis",
+    "issue_types": [
+      {
+        "issue_type": "Api Failure",
+        "avg_healing_time_ms": 1216.2,
+        "median_healing_time_ms": 1240.4,
+        "std_dev_ms": 438.4,
+        "success_rate": 91.0,
+        "min_time_ms": 521.3,
+        "max_time_ms": 1980.1
+      },
+      {
+        "issue_type": "Memory Leak",
+        "avg_healing_time_ms": 3208.5,
+        "median_healing_time_ms": 3239.5,
+        "std_dev_ms": 1182.3,
+        "success_rate": 82.0,
+        "min_time_ms": 1015.1,
+        "max_time_ms": 4998.0
+      },
+      {
+        "issue_type": "Database Timeout",
+        "avg_healing_time_ms": 1894.8,
+        "median_healing_time_ms": 1905.2,
+        "std_dev_ms": 572.1,
+        "success_rate": 94.0,
+        "min_time_ms": 811.0,
+        "max_time_ms": 2988.0
+      },
+      {
+        "issue_type": "Network Latency",
+        "avg_healing_time_ms": 915.7,
+        "median_healing_time_ms": 957.8,
+        "std_dev_ms": 353.0,
+        "success_rate": 94.0,
+        "min_time_ms": 313.1,
+        "max_time_ms": 1499.3
+      },
+      {
+        "issue_type": "Configuration Error",
+        "avg_healing_time_ms": 615.9,
+        "median_healing_time_ms": 640.7,
+        "std_dev_ms": 242.3,
+        "success_rate": 98.0,
+        "min_time_ms": 202.3,
+        "max_time_ms": 998.8
+      }
+    ],
+    "overall_avg_healing_time_ms": 1570.2,
+    "overall_success_rate": 91.8,
+    "total_issues_simulated": 500,
+    "total_successful_heals": 459.0
+  },
+  "experiment_5": {
+    "name": "System Scalability Analysis",
+    "scaling_results": [
+      {
+        "num_agents": 1,
+        "avg_response_time_ms": 53.3,
+        "success_rate_percent": 94.1,
+        "cpu_usage_percent": 5.8,
+        "memory_usage_mb": 52,
+        "throughput_tps": 9.4
+      },
+      {
+        "num_agents": 5,
+        "avg_response_time_ms": 52.9,
+        "success_rate_percent": 94.2,
+        "cpu_usage_percent": 9.0,
+        "memory_usage_mb": 60,
+        "throughput_tps": 47.1
+      },
+      {
+        "num_agents": 10,
+        "avg_response_time_ms": 58.2,
+        "success_rate_percent": 93.6,
+        "cpu_usage_percent": 13.0,
+        "memory_usage_mb": 70,
+        "throughput_tps": 93.6
+      },
+      {
+        "num_agents": 20,
+        "avg_response_time_ms": 62.6,
+        "success_rate_percent": 94.3,
+        "cpu_usage_percent": 21.0,
+        "memory_usage_mb": 90,
+        "throughput_tps": 188.6
+      },
+      {
+        "num_agents": 50,
+        "avg_response_time_ms": 70.9,
+        "success_rate_percent": 92.5,
+        "cpu_usage_percent": 45.0,
+        "memory_usage_mb": 150,
+        "throughput_tps": 462.3
+      },
+      {
+        "num_agents": 100,
+        "avg_response_time_ms": 99.1,
+        "success_rate_percent": 90.5,
+        "cpu_usage_percent": 80,
+        "memory_usage_mb": 250,
+        "throughput_tps": 905.5
+      }
+    ],
+    "max_agents_tested": 100,
+    "performance_degradation": 3.6,
+    "scaling_efficiency": 96.3
+  }
+}
