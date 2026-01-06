@@ -1,0 +1,12 @@
+{
+    "name": "Security Vulnerability Benchmark",
+    "test_cases": [
+      {
+        "id": "sql_injection_simple",
+        "name": "Simple SQL Injection",
+        "original_code": "def get_user(username):\n    query = f\"SELECT * FROM users WHERE username = '{username}'\"\n    return execute_query(query)",
+        "attack_inputs": ["admin", "admin' OR '1'='1", "' UNION SELECT * FROM passwords --"],
+        "expected_fixes": ["parameterized_queries", "input_sanitization"]
+      }
+    ]
+  }

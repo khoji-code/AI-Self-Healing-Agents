@@ -1,0 +1,11 @@
+{
+    "name": "Performance Benchmark",
+    "test_cases": [
+      {
+        "id": "slow_algorithm",
+        "name": "Inefficient Algorithm",
+        "original_code": "def find_duplicates(items):\n    duplicates = []\n    for i in range(len(items)):\n        for j in range(i + 1, len(items)):\n            if items[i] == items[j]:\n                duplicates.append(items[i])\n    return duplicates",
+        "expected_fixes": ["use_set", "optimized_algorithm"]
+      }
+    ]
+  }
