@@ -1,0 +1,119 @@
+{
+  "benchmark_name": "Self-Healing Bug Detection Benchmark",
+  "timestamp": "2026-01-06T05:25:01.062174",
+  "statistics": {
+    "total_tests": 4,
+    "tests_passed": 3,
+    "success_rate": 0.75,
+    "fix_generation_rate": 0.75,
+    "fix_validation_rate": 0.0,
+    "average_improvement": 0.25,
+    "average_execution_time": 0.11744827032089233,
+    "by_difficulty": {
+      "easy": {
+        "count": 2,
+        "success_rate": 0.5,
+        "avg_improvement": 0.125,
+        "avg_time": 0.05875599384307861
+      },
+      "medium": {
+        "count": 1,
+        "success_rate": 1.0,
+        "avg_improvement": 0.25,
+        "avg_time": 0.35222601890563965
+      },
+      "hard": {
+        "count": 1,
+        "success_rate": 1.0,
+        "avg_improvement": 0.25,
+        "avg_time": 5.507469177246094e-05
+      }
+    }
+  },
+  "scores": {
+    "detection_score": 0.75,
+    "fix_score": 0.0,
+    "performance_score": 0.9882551729679108,
+    "total_score": 0.4976510345935822,
+    "weighted_score": 0.8181818181818182
+  },
+  "results": [
+    {
+      "test_id": "simple_division_by_zero",
+      "test_name": "Simple Division by Zero",
+      "difficulty": "easy",
+      "success": false,
+      "bugs_detected": [],
+      "bugs_missed": [
+        "zero_check",
+        "exception_handling"
+      ],
+      "fix_generated": false,
+      "fix_valid": false,
+      "fix_improvement": 0.0,
+      "execution_time": 8.106231689453125e-06,
+      "error_message": "No bugs detected"
+    },
+    {
+      "test_id": "null_pointer_simple",
+      "test_name": "Null Pointer Access",
+      "difficulty": "easy",
+      "success": true,
+      "bugs_detected": [
+        "null_pointer"
+      ],
+      "bugs_missed": [
+        "null_check",
+        "optional_handling"
+      ],
+      "fix_generated": true,
+      "fix_valid": false,
+      "fix_improvement": 0.25,
+      "execution_time": 0.11750388145446777,
+      "error_message": null
+    },
+    {
+      "test_id": "complex_multiple_bugs",
+      "test_name": "Complex Function with Multiple Bugs",
+      "difficulty": "hard",
+      "success": true,
+      "bugs_detected": [
+        "null_pointer",
+        "json_parsing_unsafe"
+      ],
+      "bugs_missed": [
+        "json_parsing_safety",
+        "key_iteration_fix",
+        "null_safety",
+        "zero_division_check"
+      ],
+      "fix_generated": true,
+      "fix_valid": false,
+      "fix_improvement": 0.25,
+      "execution_time": 5.507469177246094e-05,
+      "error_message": null
+    },
+    {
+      "test_id": "memory_leak_pattern",
+      "test_name": "Memory Leak Pattern",
+      "difficulty": "medium",
+      "success": true,
+      "bugs_detected": [
+        "memory_issue"
+      ],
+      "bugs_missed": [
+        "chunked_processing",
+        "memory_cleanup",
+        "generator_use"
+      ],
+      "fix_generated": true,
+      "fix_valid": false,
+      "fix_improvement": 0.25,
+      "execution_time": 0.35222601890563965,
+      "error_message": null
+    }
+  ],
+  "recommendations": [
+    "Enhance fix validation with more comprehensive testing"
+  ]
+}

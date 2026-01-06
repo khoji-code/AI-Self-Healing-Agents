@@ -27,7 +27,7 @@
         "original_code": "def process_user(user):\n    \"\"\"Process user data\"\"\"\n    return user.name.upper()  # BUG: user could be None",
         "test_inputs": [
           {"input": {"name": "Alice"}, "should_fail": false},
-          {"input": None, "should_fail": true},
+          {"input": null, "should_fail": true},
           {"input": {"name": null}, "should_fail": true}
         ],
         "expected_fixes": ["null_check", "optional_handling"],
@@ -41,9 +41,9 @@
         "bug_type": "multiple",
         "original_code": "def process_data(data_string, divisor=1):\n    \"\"\"Process data string with various operations\"\"\"\n    \n    # Parse data\n    data = json.loads(data_string)  # BUG 1: No try-catch for invalid JSON\n    \n    # Calculate statistics\n    total = sum(data['values'])\n    average = total / divisor  # BUG 2: Division by zero possible\n    \n    # Transform keys\n    result = {}\n    for key in data.keys():  # BUG 3: keys() returns view, not list in Python 3\n        result[key.upper()] = data[key]\n    \n    # Add metadata\n    result['processed_by'] = current_user.name  # BUG 4: current_user might be None\n    \n    return result",
         "test_inputs": [
-          {"input": {"data_string": \"{\\\"values\\\": [1,2,3]}\", \"divisor\": 2}, "should_fail": false},
-          {"input": {"data_string": \"invalid json\", \"divisor\": 1}, "should_fail": true},
-          {"input": {"data_string": \"{\\\"values\\\": []}\", \"divisor\": 0}, "should_fail": true}
+          {"input": {"data_string": "{\"values\": [1,2,3]}", "divisor": 2}, "should_fail": false},
+          {"input": {"data_string": "invalid json", "divisor": 1}, "should_fail": true},
+          {"input": {"data_string": "{\"values\": []}", "divisor": 0}, "should_fail": true}
         ],
         "expected_fixes": ["json_parsing_safety", "zero_division_check", "key_iteration_fix", "null_safety"],
         "validation_function": "validate_complex_processing"
@@ -57,7 +57,7 @@
         "original_code": "def process_large_dataset(data):\n    \"\"\"Process large dataset\"\"\"\n    results = []\n    \n    for item in data:\n        # Process each item (memory intensive)\n        processed = heavy_computation(item)\n        results.append(processed)\n        \n        # BUG: results list keeps growing, no cleanup\n        \n    return results",
         "test_inputs": [
           {"input": [1, 2, 3, 4, 5], "should_fail": false, "note": "Small data works"},
-          {"input": list(range(1000000)), "should_fail": true, "note": "Large data causes memory issues"}
+          {"input": "list(range(1000000))", "should_fail": true, "note": "Large data causes memory issues"}
         ],
         "expected_fixes": ["chunked_processing", "memory_cleanup", "generator_use"],
         "validation_function": "validate_memory_usage"

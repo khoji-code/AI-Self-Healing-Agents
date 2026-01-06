@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-"""
-Benchmark Runner for Self-Healing Bug Detection
-"""
+
 import asyncio
 import json
 import os
